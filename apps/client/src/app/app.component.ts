@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@enlace/api-interfaces';
+import { Message } from '@enlace/interfaces';
 
 @Component({
   selector: 'enlace-root',

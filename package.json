@@ -7,13 +7,12 @@
   "scripts": {
     "dev:client": "nx serve client",
     "dev:api": "nx serve api",
-    "dev": "dev:api && dev:client",
-    "build:client": "nx build client",
+    "build:client": "nx build client --prod",
     "build:api": "nx build api",
-    "build": "build:client && build:api",
+    "build": "yarn build:client && yarn build:api",
     "test:client": "nx test client",
     "test:api": "nx test api",
-    "test": "test:api && test:client"
+    "prod:api": "node dist/apps/api/main.js"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +21,7 @@
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
     "@angular/forms": "~13.2.0",
+    "@angular/material": "^13.2.5",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",

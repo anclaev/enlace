@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@enlace/interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@enlace/interfaces": ["libs/interfaces/src/index.ts"],
       "@enlace/api/*": ["apps/api/src/*"],
       "@enlace/*": ["apps/client/src/*"]
     }
