@@ -5,9 +5,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "dev:client": "nx serve client",
+    "dev:api": "nx serve api",
+    "dev": "dev:api && dev:client",
+    "build:client": "nx build client",
+    "build:api": "nx build api",
+    "build": "build:client && build:api",
+    "test:client": "nx test client",
+    "test:api": "nx test api",
+    "test": "test:api && test:client"
   },
   "private": true,
   "dependencies": {
