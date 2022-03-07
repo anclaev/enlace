@@ -1,13 +1,8 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@enlace/interfaces';
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'enlace-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.sass'],
 })
-export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
-}
+export class AppComponent {}
