@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 
+proxy-prod.config.json
+
 # dependencies
 /node_modules
 

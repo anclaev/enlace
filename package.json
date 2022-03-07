@@ -9,8 +9,10 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "dev:client": "nx serve frontend",
     "dev:api": "nx serve api",
-    "build:client": "nx build frontend",
+    "build:client": "nx build frontend --prod",
     "build:api": "nx build api",
+    "staging:client": "ng run frontend:serve:production",
+    "staging:api": "ng run api:serve:development",
     "test:client": "nx test frontend --codeCoverage",
     "test:api": "nx test api --codeCoverage"
   },
