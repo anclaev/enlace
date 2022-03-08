@@ -1,17 +1,15 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
-import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
-import { MongooseModule } from '@nestjs/mongoose'
+import { ConfigModule } from '@nestjs/config'
 import { Module } from '@nestjs/common'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 
+import { DatabaseModule } from '../database/database.module'
 import { UsersModule } from '../users/users.module'
 
 import { configSchema } from '../utils/config'
-
-import { ENV } from '../env'
 
 @Module({
   imports: [
@@ -20,17 +18,12 @@ import { ENV } from '../env'
       validationSchema: configSchema,
       envFilePath: '.env.local',
     }),
-    MongooseModule.forRootAsync({
-      useFactory: async (config: ConfigService) => ({
-        uri: config.get<string>(ENV.MONGO_URI),
-        useNewUrlParser: true,
-      }),
-      inject: [ConfigService],
-    }),
+    DatabaseModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
       driver: ApolloDriver,
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
