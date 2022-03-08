@@ -22,6 +22,8 @@ import { configSchema } from '../utils/config'
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
       driver: ApolloDriver,
+      playground: process.env.NODE_ENV !== 'production',
+      useGlobalPrefix: true,
     }),
     UsersModule,
   ],
