@@ -2,7 +2,7 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "frontend": "apps/frontend",
-    "common": "libs/common"
+    "common": "libs/common",
+    "frontend": "apps/frontend"
   }
 }

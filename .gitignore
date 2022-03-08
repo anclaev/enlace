@@ -7,6 +7,10 @@
 
 proxy-prod.config.json
 
+.env.local
+.env.production.local
+.env.development.local
+
 # dependencies
 /node_modules
 

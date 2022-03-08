@@ -1,13 +1,21 @@
+import { Logger, ValidationPipe } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
-import { Logger } from '@nestjs/common'
 
 import { AppModule } from './app/app.module'
 
-const bootstrap = async () => {
-  const port = process.env.PORT || 3333
-  const prefix = 'api'
+import { ENV } from './env'
 
-  const app = (await NestFactory.create(AppModule)).setGlobalPrefix(prefix)
+const bootstrap = async () => {
+  const app = (await NestFactory.create(AppModule)).useGlobalPipes(
+    new ValidationPipe()
+  )
+  const config = app.get(ConfigService)
+
+  const prefix = config.get<string>(ENV.PREFIX)
+  const port = config.get<number>(ENV.PORT) || 3333
+
+  if (prefix) app.setGlobalPrefix(prefix)
 
   await app
     .listen(port)
