@@ -6,6 +6,7 @@
 /out-tsc
 
 proxy-prod.config.json
+generated-types.ts
 
 .env.local
 .env.production.local

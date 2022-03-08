@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 
-import { APOLLO_OPTIONS } from 'apollo-angular'
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular'
 import { HttpLink } from 'apollo-angular/http'
 import { InMemoryCache } from '@apollo/client/core'
 
@@ -18,6 +18,7 @@ import { HeaderModule } from './header/header.module'
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    ApolloModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -31,7 +32,7 @@ import { HeaderModule } from './header/header.module'
       useFactory: (httpLink: HttpLink) => ({
         cache: new InMemoryCache(),
         links: httpLink.create({
-          uri: 'api/graphql',
+          uri: '/api/graphql',
         }),
       }),
       deps: [HttpLink],

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
+
+import { CreateUserGQL } from '../../../generated-types'
 
 import { AuthCredentials } from '@enlace/common'
 
@@ -7,12 +9,20 @@ import { AuthCredentials } from '@enlace/common'
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.sass'],
 })
-export class SignUpComponent implements OnInit {
-  constructor() {}
+export class SignUpComponent {
+  constructor(private readonly createUserGql: CreateUserGQL) {}
 
-  ngOnInit(): void {}
-
-  signUp(credentials: AuthCredentials) {
-    console.log(credentials)
+  signUp({ email, password }: AuthCredentials) {
+    this.createUserGql.mutate(
+      {
+        createUserData: {
+          email: email,
+          password: password,
+        },
+      },
+      {
+        useMutationLoading: true,
+      }
+    )
   }
 }
