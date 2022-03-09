@@ -1,6 +1,9 @@
 <mat-toolbar class="header">
-  <h1 class="header__title">Enlace</h1>
+  <h1 class="header__title" (click)="toHomePage()">Enlace</h1>
   <nav class="header-nav">
-    <a routerLink="/"><h2>Home</h2></a>
+    <div *ngIf="(isLoggenIn$ | async) === true; else login"></div>
+    <ng-template #login>
+      <a routerLink="/login"><h2>Login</h2></a></ng-template
+    >
   </nav>
 </mat-toolbar>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 
-import { AuthCredentials } from '@common'
+import { LoginService } from './login.service'
+
+import { CreateUserInput } from 'src/generated-types'
 
 @Component({
   selector: 'enlace-login',
@@ -8,11 +10,11 @@ import { AuthCredentials } from '@common'
   styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly loginService: LoginService) {}
 
   ngOnInit(): void {}
 
-  signIn({ email, password }: AuthCredentials) {
-    console.log(email, ' ', password)
+  signIn(createUserData: CreateUserInput) {
+    this.loginService.login(createUserData).subscribe(() => {})
   }
 }

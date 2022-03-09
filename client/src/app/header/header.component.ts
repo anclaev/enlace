@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { Observable } from 'rxjs'
+
+import { AuthService } from '../auth/auth.service'
 
 @Component({
   selector: 'enlace-header',
@@ -6,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  isLoggenIn$: Observable<boolean>
+
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router,
+  ) {
+    this.isLoggenIn$ = authService.authenticated$
+  }
+
+  toHomePage() {
+    this.router.navigate(['/'])
+  }
 
   ngOnInit(): void {}
+
+  onLogout() {}
 }
