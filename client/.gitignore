@@ -6,6 +6,8 @@
 /out-tsc
 /bazel-out
 
+proxy-prod.conf.json
+
 # Node
 /node_modules
 npm-debug.log
