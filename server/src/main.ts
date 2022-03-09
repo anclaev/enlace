@@ -3,7 +3,6 @@ import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 
 import * as cookieParser from 'cookie-parser'
-import helmet from 'helmet'
 
 import { AppModule } from './app.module'
 
@@ -11,17 +10,6 @@ const bootstrap = async () => {
   const app = await NestFactory.create(AppModule)
 
   app.useGlobalPipes(new ValidationPipe())
-
-  app.use(
-    helmet({
-      xssFilter: true,
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: [`'self'`],
-        },
-      },
-    }),
-  )
   app.use(cookieParser())
 
   app.enableCors()
