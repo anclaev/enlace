@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { AuthCredentials } from '@common'
 
@@ -10,7 +11,10 @@ import { CreateUserGQL } from 'src/generated-types'
   styleUrls: ['./sign-up.component.sass'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(private readonly createUserGql: CreateUserGQL) {}
+  constructor(
+    private readonly createUserGql: CreateUserGQL,
+    private readonly router: Router,
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,6 +26,8 @@ export class SignUpComponent implements OnInit {
           password,
         },
       })
-      .subscribe((res) => console.log(res))
+      .subscribe(() => {
+        this.router.navigate(['/'])
+      })
   }
 }

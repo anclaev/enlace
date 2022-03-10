@@ -1,9 +1,14 @@
 <mat-toolbar class="header">
   <h1 class="header__title" (click)="toHomePage()">Enlace</h1>
   <nav class="header-nav">
-    <div *ngIf="(isLoggenIn$ | async) === true; else login"></div>
+    <div *ngIf="(isLoggenIn$ | async) === true; else login">
+      <a (click)="onLogout()">Logout</a>
+    </div>
     <ng-template #login>
       <a routerLink="/login"><h2>Login</h2></a></ng-template
     >
+    <div *ngIf="(isLoggenIn$ | async) !== true">
+      <a routerLink="/signup">Sign Up</a>
+    </div>
   </nav>
 </mat-toolbar>
